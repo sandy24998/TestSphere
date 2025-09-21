@@ -1,27 +1,62 @@
 package com.sandeep;
 
+import java.time.Duration;
+
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class alert_handling {
     public static void main(String[] args) throws InterruptedException {
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://rahulshettyacademy.com/AutomationPractice/");
-        driver.manage().window().maximize();
-        Thread.sleep(3000);
-        driver.findElement(By.id("name")).sendKeys("himanshu");
-        Thread.sleep(1000);
-        // driver.findElement(By.id("alertbtn")).click();
-        driver.findElement(By.id("confirmbtn")).click();
-        Thread.sleep(1000);
-        System.out.println(driver.switchTo().alert().getText());
-        // driver.switchTo().alert().accept();
-        driver.switchTo().alert().accept();
+        // First test block using Thread.sleep()
+        WebDriver driver1 = new ChromeDriver();
+        driver1.manage().window().maximize();
+        driver1.get("https://rahulshettyacademy.com/AutomationPractice/");
+        Thread.sleep(2000);
+        driver1.findElement(By.id("name")).sendKeys("Sandeep");
+        Thread.sleep(2000);
+        driver1.findElement(By.id("confirmbtn")).click();
+        Thread.sleep(2000);
+        System.out.println(driver1.switchTo().alert().getText());
+        driver1.switchTo().alert().accept();
+        Thread.sleep(2000);
+        driver1.quit();
 
-        // note:- any alert type we can handle with this line of code, if ok/confirm is there --> .accept() and if cancel/no --> .dismiss()
-         Thread.sleep(1000);
-        driver.quit();
+        // Second test block using implicit wait
+        WebDriver driver2 = new ChromeDriver();
+        driver2.manage().window().maximize();
+        
+        driver2.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        driver2.get("https://rahulshettyacademy.com/AutomationPractice/");
+        driver2.findElement(By.id("name")).sendKeys("Sandeep");
+        driver2.findElement(By.id("confirmbtn")).click();
+        
+        // Handling the alert (implicitly waits are not needed for alerts)
+        System.out.println(driver2.switchTo().alert().getText());
+        driver2.switchTo().alert().accept();
+        
+        driver2.quit();
+
+        WebDriver driver3 = new ChromeDriver();
+        driver3.manage().window().maximize();
+
+        driver3.get("https://www.selenium.dev/selenium/web/alerts.html#");
+
+        driver3.findElement(By.id("alert")).click();;
+        WebDriverWait wait = new WebDriverWait(driver3, Duration.ofSeconds(10));
+
+        wait.until(ExpectedConditions.alertIsPresent());
+        Alert alert = driver3.switchTo().alert();
+        String text = alert.getText();
+        System.out.println("Alert text - "+text);
+        alert.accept();
+
+        driver3.quit();
+
 
     }
 }

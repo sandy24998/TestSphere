@@ -10,37 +10,35 @@ public class fillform1 {
 
     public static void main(String[] args) throws InterruptedException {
         WebDriver driver = new ChromeDriver();
+        driver.manage().window().maximize();
         // driver.navigate().to("https://rahulshettyacademy.com/loginpagePractise/");
         driver.get("https://rahulshettyacademy.com/loginpagePractise/");
-        Thread.sleep(3000);
-        driver.manage().window().maximize();
-        // by id using csSelector
-        // driver.findElement(By.cssSelector("#username")).sendKeys("Himanshu");
-        // by class using cssSelector
-        driver.findElement(By.cssSelector(".form-control")).sendKeys("rahulshettyacademy");
+        Thread.sleep(2000);
+        
+        driver.findElement(By.id("username")).sendKeys("54sandy2398");
+          Thread.sleep(2000);
+        driver.findElement(By.id("password")).sendKeys("22111");
+          Thread.sleep(2000);
+        driver.findElement(By.xpath("//input[@value='user']")).click();;
+          Thread.sleep(2000);
+          driver.findElement(By.id("okayBtn")).click();
+          Thread.sleep(2000);
+            //okayBtn
+        WebElement selectValues= driver.findElement(By.xpath("//select[@class='form-control']"));
+        Select dropdown = new Select(selectValues);
+        dropdown.selectByValue("teach");
+        dropdown.selectByIndex(2);
+        dropdown.selectByVisibleText("Consultant");
+        Thread.sleep(2000);
+        driver.findElement(By.id("terms")).click();
+          Thread.sleep(2000);
 
-        driver.findElement(By.xpath("//input[@type='password']")).sendKeys("learning");
-        Thread.sleep(3000);
-        driver.findElement(By.xpath("//input[@value='user']")).click();
-        Thread.sleep(3000);
-        driver.findElement(By.id("okayBtn")).click();
-        Thread.sleep(3000);
-        driver.findElement(By.xpath("//input[@value='admin']")).click();
-        Thread.sleep(3000);
-         WebElement select = driver.findElement(By.xpath("//select[@class='form-control']"));
-        Select selectvalue = new Select(select);
-        selectvalue.selectByValue("teach");
-        Thread.sleep(1000);
-        selectvalue.selectByIndex(2);
-        Thread.sleep(1000);
-        selectvalue.selectByVisibleText("Student");
-        Thread.sleep(3000);
-        driver.findElement(By.cssSelector("input[type='checkbox']")).click();
-        Thread.sleep(3000);
-        driver.findElement(By.xpath("//input[@id='signInBtn']")).click();
-        Thread.sleep(3000);
-        System.out.println(driver.getTitle());
+        
+        driver.findElement(By.name("signin")).click();
+        System.out.println(driver.findElement(By.xpath("//div[contains(@class,'alert')]")).getText()); 
+        Thread.sleep(2000);
         driver.quit();
+
         
     }
     
