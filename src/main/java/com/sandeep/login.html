@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login with Simple Captcha</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            padding-top: 100px;
+        }
+        .login-box {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            width: 350px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .captcha {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+            margin: 15px 0;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 2px dashed #333;
+            border-radius: 8px;
+            letter-spacing: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-box">
+        <h2>Login Page</h2>
+        
+        <label>Username</label>
+        <input type="text" id="username" placeholder="Enter username">
+
+        <label>Password</label>
+        <input type="password" id="password" placeholder="Enter password">
+
+        <div id="captcha-box" class="captcha">5 + 8</div>
+
+        <label>Enter Captcha Answer</label>
+        <input type="text" id="captchaInput" placeholder="Type answer here">
+
+        <button onclick="alert('Login Successful!')">Login</button>
+    </div>
+
+    <!-- This script changes captcha every time you refresh the page -->
+    <script>
+        const captchas = [
+            "3 + 7", "9 + 1", "4 + 6", "8 + 2", "5 + 5",
+            "7 - 4", "10 - 3", "9 - 5", "6 - 2",
+            "3 * 4", "5 * 2", "6 * 3", "4 * 5"
+        ];
+
+        window.onload = function() {
+            const randomCaptcha = captchas[Math.floor(Math.random() * captchas.length)];
+            document.getElementById("captcha-box").innerText = randomCaptcha;
+        };
+    </script>
+
+</body>
+</html>
