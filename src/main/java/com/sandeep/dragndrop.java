@@ -22,9 +22,9 @@ public class dragndrop {
         WebElement trg = driver.findElement(By.id("target"));
 
         Actions a = new Actions(driver);
-        a.dragAndDrop(src, trg).build().perform();
-        a.dragAndDrop(src1, trg).build().perform();
-        a.dragAndDrop(src2, trg).build().perform();
+        a.dragAndDrop(src, trg).perform();
+        a.dragAndDrop(src1, trg).perform();
+        a.dragAndDrop(src2, trg).perform();
         
     }
 }

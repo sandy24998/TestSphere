@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Selenium Locators Test Page</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .container { margin-bottom: 25px; padding: 15px; border: 1px solid #ccc; }
+        .input-field { margin-bottom: 10px; }
+        .tag-block { border: 1px dashed #007bff; padding: 10px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>Selenium Locator Test Harness</h1>
+
+    <div class="container">
+        <h2>1. By ID (The Best)</h2>
+        <input type="text" id="uniqueIdField" placeholder="Locate me by my unique ID">
+    </div>
+
+    <div class="container">
+        <h2>2. By Name</h2>
+        <input type="text" name="usernameInput" placeholder="Locate me by my Name attribute">
+    </div>
+
+    <div class="container tag-block">
+        <h2>3. By Class Name / 4. By Tag Name</h2>
+        <p class="data-record">This paragraph is the first element found by class 'data-record' (ClassName).</p>
+        <p class="data-record">This is the second record.</p>
+        <p class="data-record">This is the third record.</p>
+        <p>The **Tag Name** locator will find the first &lt;p&gt; tag on the page, which is the one above.</p>
+    </div>
+
+    <div class="container">
+        <h2>5. By Link Text / 6. By Partial Link Text</h2>
+        <a id="link-full" href="#" class="nav-link">Click Me for Full Match</a>
+        <br><br>
+        <a id="link-partial" href="#" class="nav-link">Click Me for Partial Match Test</a>
+    </div>
+
+    <div class="container">
+        <h2>7. By CSS Selector</h2>
+        <input type="password" class="login-input" data-test="password-field" placeholder="Target for CSS Selector">
+        </div>
+
+    <div class="container">
+        <h2>8. By XPath</h2>
+        <div id="xpath-section">
+            <span class="label-text">Username:</span>
+            <input type="text" class="input-field" placeholder="Target for Relative XPath">
+        </div>
+        </div>
+
+</body>
+</html>
