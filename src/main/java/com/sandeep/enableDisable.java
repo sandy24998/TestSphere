@@ -15,8 +15,9 @@ public class enableDisable {
         Thread.sleep(2000);
 
         String status1 = driver.findElement(By.xpath("//div[@class='picker-second']")).getAttribute("style");
-        // System.out.println(status1);
+        System.out.println(status1);
         Thread.sleep(2000);
+        
         driver.findElement(By.xpath("//div[@class='picker-second']")).click();
         Thread.sleep(2000);
         String status2 = driver.findElement(By.xpath("//div[@class='picker-second']")).getAttribute("style");
