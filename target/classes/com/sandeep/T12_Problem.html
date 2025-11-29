@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selenium Test - 3 Tabs + Table Average</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f4; }
+        button { padding: 15px 30px; font-size: 18px; background: #007bff; color: white; border: none; cursor: pointer; border-radius: 8px; }
+        button:hover { background: #0056b3; }
+        h1 { color: #333; }
+        table { margin-top: 20px; width: 60%; border-collapse: collapse; background: white; }
+        td, th { border: 1px solid #ccc; padding: 12px; text-align: center; }
+        th { background: #007bff; color: white; }
+    </style>
+</head>
+<body>
+
+    <h1>Selenium Automation Test Page</h1>
+    <p>Click the button below 3 times — it will open 3 new tabs.</p>
+
+    <!-- This is the button your Selenium code will click -->
+    <button id="openTabBtn" onclick="openThreeTabs()">
+        Click Me to Open New Tab
+    </button>
+
+    <hr>
+    <p><strong>Main Tab:</strong> This is the original page. Nothing to read here.</p>
+
+    <script>
+        let tabCount = 0;
+
+        function openThreeTabs() {
+            tabCount++;
+            let newTab;
+
+            if (tabCount === 1) {
+                // First tab - simple text
+                newTab = window.open('', '_blank');
+                newTab.document.write(`
+                    <!DOCTYPE html>
+                    <html><head><title>Tab 1 - Text</title>
+                    <style>body{font-family:Arial;padding:40px;background:#e8f5e9;}
+                    h1{color:green;}</style></head>
+                    <body>
+                        <h1>This is Tab 1</h1>
+                        <p><strong>Product Name:</strong> Wireless Mouse</p>
+                        <p><strong>Price:</strong> $29.99</p>
+                        <p><strong>Rating:</strong> 4.8 / 5.0</p>
+                        <p>This tab contains basic product info.</p>
+                    </body>
+                    </html>
+                `);
+                newTab.document.close();
+            }
+
+            else if (tabCount === 2) {
+                // Second tab - different text
+                newTab = window.open('', '_blank');
+                newTab.document.write(`
+                    <!DOCTYPE html>
+                    <html><head><title>Tab 2 - Text</title>
+                    <style>body{font-family:Arial;padding:40px;background:#fff3e0;}
+                    h1{color:orange;}</style></head>
+                    <body>
+                        <h1>This is Tab 2</h1>
+                        <p><strong>Product Name:</strong> Mechanical Keyboard</p>
+                        <p><strong>Price:</strong> $89.99</p>
+                        <p><strong>Rating:</strong> 4.9 / 5.0</p>
+                        <p>Limited edition RGB keyboard with cherry switches.</p>
+                    </body>
+                    </html>
+                `);
+                newTab.document.close();
+            }
+
+            else if (tabCount === 3) {
+                // Third tab - contains a table with numbers
+                newTab = window.open('', '_blank');
+                newTab.document.write(`
+                    <!DOCTYPE html>
+                    <html><head><title>Tab 3 - Sales Table</title>
+                    <style>
+                        body{font-family:Arial;padding:40px;background:#e3f2fd;}
+                        h1{color:#1976d2;}
+                        table{width:70%;margin:30px auto;border-collapse:collapse;}
+                        td,th{border:1px solid #999;padding:15px;text-align:center;}
+                        th{background:#1976d2;color:white;}
+                    </style>
+                    </head>
+                    <body>
+                        <h1>Monthly Sales Data (Tab 3)</h1>
+                        <table>
+                            <tr><th>Month</th><th>Sales ($)</th></tr>
+                            <tr><td>January</td><td>45000</td></tr>
+                            <tr><td>February</td><td>52000</td></tr>
+                            <tr><td>March</td><td>48000</td></tr>
+                            <tr><td>April</td><td>61000</td></tr>
+                            <tr><td>May</td><td>58000</td></tr>
+                            <tr><td>June</td><td>67000</td></tr>
+                            <tr><td>July</td><td>72000</td></tr>
+                            <tr><td>August</td><td>69000</td></tr>
+                        </table>
+                        <p><strong>Selenium will calculate average from this table</strong></p>
+                        <p>Expected average = $59,000</p>
+                    </body>
+                    </html>
+                `);
+                newTab.document.close();
+            }
+        }
+    </script>
+
+</body>
+</html>
